@@ -1,0 +1,84 @@
+{
+  "base": "b9acf138a1e28ce1fc23b5a4fc4b12444b50f7ea",
+  "branch": "exp/reviewed-inference",
+  "source": {
+    "base_commit": "b9acf138a1e28ce1fc23b5a4fc4b12444b50f7ea",
+    "patch_sha256": "dcded6796d3d5c2373c1e9df3df072b4987700b347f6819fb053bd1e6788d6ca",
+    "source_worktree": "/home/cheesecake/woof-lab/llama.cpp-reviewed",
+    "sources": {
+      "ggml/src/ggml-cuda/woof_verify_matvec.cuh": "3b25e3b5c47370cec688c4e77242352a8859379a67658562fb0e2d384c9b5853",
+      "ggml/src/ggml-cuda/woof_tc_matvec.cuh": "1d7b9534890432a339b687bcb6cdfe3d7513d50792684a81c5352933946585bb",
+      "ggml/src/ggml-cuda/woof-native-affine.cuh": "61af0fbed595a25f9594162cceeb53e44b9caa1376131d73b5b5b385714c62f8"
+    }
+  },
+  "binaries": {
+    "llama-server": {
+      "bytes": 17888,
+      "mtime_unix": 1791407421.433614,
+      "sha256": "055bace79c1ddd23fa822d1c5e5453fc5d3acab9ce2045ff43885f4952215c85"
+    },
+    "llama-bench": {
+      "bytes": 17888,
+      "mtime_unix": 1791407428.785613,
+      "sha256": "1f4721acfe6eeaa161e15a1d14a359afe40926ecbc967a2fe7a3808ce33bad36"
+    },
+    "test-backend-ops": {
+      "bytes": 1381952,
+      "mtime_unix": 1791407446.5376103,
+      "sha256": "eeadbf23bd3d220944dd03dbbe683474f664d071ef4d37fb1106223439832e78"
+    }
+  },
+  "cmake": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CUDA_ARCHITECTURES": "89",
+    "CMAKE_CUDA_COMPILER": "/usr/local/cuda-12.6/bin/nvcc",
+    "GGML_CUDA": "ON",
+    "GGML_CUDA_GRAPHS": "ON"
+  },
+  "cuda": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "cmake_version": "cmake version 3.28.3",
+  "kernel": "Linux LAPTOP-HV82NVKM 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux",
+  "os": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.4 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU, 581.86, 6141 MiB",
+  "build_script": "work/build_reviewed.sh",
+  "build_exit_code": 0,
+  "shared_libraries": {
+    "libggml-base.so.0.26.0": {
+      "bytes": 955616,
+      "sha256": "1f50bd1ca449f84a5289ecf73317810a921b2e9310836c9f59ea2940ee4e7832"
+    },
+    "libggml-cpu.so.0.26.0": {
+      "bytes": 1418464,
+      "sha256": "e25e319b18450a26c9386750e25d134578c3400e687eec604da779bddadbee6b"
+    },
+    "libggml-cuda.so.0.26.0": {
+      "bytes": 209472648,
+      "sha256": "34a5713f8ec3fe0c45cc3cb85c3f9f17d4e5b7f895582eeca87797e8829977ed"
+    },
+    "libggml.so.0.26.0": {
+      "bytes": 60360,
+      "sha256": "9400b87fd086f2b1757b5a743cd575bcba433d905e9d0ec7436b33a41491570b"
+    },
+    "libllama-bench-impl.so": {
+      "bytes": 485856,
+      "sha256": "041a4dc28866ad41593f229adc2cf32d7dc2a1484970ab43b4f9293a8eea09a0"
+    },
+    "libllama-common.so.0.6.0": {
+      "bytes": 6348736,
+      "sha256": "80950c92e57516b98faee8ffe184c814e04b4ad3376b39d7d0f95d1046ff75d5"
+    },
+    "libllama-server-impl.so": {
+      "bytes": 7319192,
+      "sha256": "04041cfbfa7ce022f6c51be00a5c81cad77157abf58c2e02e090d48de6fbfebb"
+    },
+    "libllama.so.0.6.0": {
+      "bytes": 4928336,
+      "sha256": "29fdd4dc6e115ccb162fb104fc6685003175fb5723719e7e21743c813b2c5640"
+    },
+    "libmtmd.so.0.6.0": {
+      "bytes": 1971312,
+      "sha256": "174d1d1a370d12c21243b4cfe4bac5ddf2510b3a61bfc87ff04131b6a278b1b6"
+    }
+  }
+}

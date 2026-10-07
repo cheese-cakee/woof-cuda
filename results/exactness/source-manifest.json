@@ -1,0 +1,10 @@
+{
+  "base_commit": "b9acf138a1e28ce1fc23b5a4fc4b12444b50f7ea",
+  "patch_sha256": "dcded6796d3d5c2373c1e9df3df072b4987700b347f6819fb053bd1e6788d6ca",
+  "source_worktree": "/home/cheesecake/woof-lab/llama.cpp-reviewed",
+  "sources": {
+    "ggml/src/ggml-cuda/woof_verify_matvec.cuh": "3b25e3b5c47370cec688c4e77242352a8859379a67658562fb0e2d384c9b5853",
+    "ggml/src/ggml-cuda/woof_tc_matvec.cuh": "1d7b9534890432a339b687bcb6cdfe3d7513d50792684a81c5352933946585bb",
+    "ggml/src/ggml-cuda/woof-native-affine.cuh": "61af0fbed595a25f9594162cceeb53e44b9caa1376131d73b5b5b385714c62f8"
+  }
+}

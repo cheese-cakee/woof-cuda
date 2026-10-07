@@ -1,0 +1,33 @@
+{
+  "plain": {
+    "bin": "$WOOF_LAB/llama.cpp-woof/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/woof-4b-native-affine.gguf",
+    "env": {
+      "WOOF_EXACT_SPEC": "1",
+      "WOOF_NATIVE_KERNEL": "f32",
+      "GGML_CUDA_DISABLE_FUSION": "0",
+      "WOOF_FA_SPLITS": "8"
+    },
+    "flags": []
+  },
+  "dflash7": {
+    "bin": "$WOOF_LAB/llama.cpp-woof/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/woof-4b-native-affine.gguf",
+    "env": {
+      "WOOF_EXACT_SPEC": "1",
+      "WOOF_NATIVE_KERNEL": "f32",
+      "GGML_CUDA_DISABLE_FUSION": "0",
+      "WOOF_FA_SPLITS": "8"
+    },
+    "flags": [
+      "--spec-type",
+      "draft-dflash",
+      "-md",
+      "$WOOF_LAB/models/drafts/qwen35-4b-dflash-q5km/Qwen3.5-4B-DFlash.gguf",
+      "-ngld",
+      "99",
+      "--spec-draft-n-max",
+      "7"
+    ]
+  }
+}

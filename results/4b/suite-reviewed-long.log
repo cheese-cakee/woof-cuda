@@ -1,0 +1,9 @@
+run 1/1 config reviewed_plain
+run 1/1 config reviewed_dflash7
+
+== summary: geometric-mean decode speedup vs reviewed_plain
+config                           agent      edit     write     all  decode s
+reviewed_plain                    1.00      1.00      1.00    1.00      27.8
+reviewed_dflash7                  1.51      2.16      1.42    1.60      17.6
+reviewed_plain: 0/4 outputs differ from reviewed_plain
+reviewed_dflash7: 0/4 outputs differ from reviewed_plain

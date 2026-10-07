@@ -1,0 +1,57 @@
+{
+  "reviewed_plain": {
+    "ratio_median": 1.0,
+    "ratio_min": 1.0,
+    "ratio_max": 1.0,
+    "rate_median": 56.19583955579396,
+    "rate_min": 55.910334684178736,
+    "rate_max": 58.72815193310788,
+    "request_median": 52.68087986899991,
+    "request_min": 51.91920888599998,
+    "request_max": 54.97089573800076
+  },
+  "old_exact": {
+    "ratio_median": 0.8774327482560804,
+    "ratio_min": 0.8730312984566185,
+    "ratio_max": 0.9020660524370365,
+    "rate_median": 50.79801792062816,
+    "rate_min": 49.1544859369046,
+    "rate_max": 51.065155075978836,
+    "request_median": 58.319607672000075,
+    "request_min": 57.40150773800133,
+    "request_max": 59.74294025300151
+  },
+  "reviewed_dflash7": {
+    "ratio_median": 2.138261343757496,
+    "ratio_min": 2.06536520568287,
+    "ratio_max": 2.1499105668846887,
+    "rate_median": 122.81095104269856,
+    "rate_min": 122.18942852215156,
+    "rate_max": 123.71004446457499,
+    "request_median": 38.44553350800061,
+    "request_min": 37.96619369600148,
+    "request_max": 41.08169357800034
+  },
+  "reviewed_dflash15": {
+    "ratio_median": 1.5516578881216654,
+    "ratio_min": 1.407759284330798,
+    "ratio_max": 1.567192025488392,
+    "rate_median": 82.29445923901127,
+    "rate_min": 78.05248082450936,
+    "rate_max": 83.47931376829261,
+    "request_median": 47.08425297199983,
+    "request_min": 46.932542853999166,
+    "request_max": 49.006045903000995
+  },
+  "reviewed_lookup16": {
+    "ratio_median": 1.0066997125669699,
+    "ratio_min": 0.9504179581270574,
+    "ratio_max": 1.035550022986114,
+    "rate_median": 50.406920147393535,
+    "rate_min": 50.150274444335544,
+    "rate_max": 52.27943509467784,
+    "request_median": 53.729893559000175,
+    "request_min": 52.862886539000556,
+    "request_max": 54.98384389999865
+  }
+}

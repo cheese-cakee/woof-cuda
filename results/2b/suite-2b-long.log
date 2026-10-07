@@ -1,0 +1,15 @@
+run 1/1 config native_plain
+run 1/1 config native_lookup8
+run 1/1 config native_lookup16
+run 1/1 config native_lookup32
+
+== summary: geometric-mean decode speedup vs native_plain
+config                           agent      edit     write     all  decode s
+native_plain                      1.00      1.00      1.00    1.00       9.6
+native_lookup8                    1.30      1.28      0.98    1.12       8.6
+native_lookup16                   1.03      1.26      0.95    1.04       8.9
+native_lookup32                   0.74      1.14      0.90    0.91       9.7
+native_plain: 0/4 outputs differ from native_plain
+native_lookup8: 0/4 outputs differ from native_plain
+native_lookup16: 0/4 outputs differ from native_plain
+native_lookup32: 0/4 outputs differ from native_plain

@@ -1,0 +1,90 @@
+{
+  "plain": {
+    "bin": "$WOOF_LAB/llama.cpp/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/Underdog-27B-Q4_1.gguf",
+    "flags": [
+      "-ngl",
+      "16",
+      "-c",
+      "4096",
+      "-b",
+      "256",
+      "-ub",
+      "256",
+      "-t",
+      "10",
+      "-tb",
+      "10"
+    ]
+  },
+  "plain_gpu20": {
+    "bin": "$WOOF_LAB/llama.cpp/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/Underdog-27B-Q4_1.gguf",
+    "flags": [
+      "-ngl",
+      "20",
+      "-c",
+      "4096",
+      "-b",
+      "256",
+      "-ub",
+      "256",
+      "-t",
+      "10",
+      "-tb",
+      "10"
+    ]
+  },
+  "dflash2_n5": {
+    "bin": "$WOOF_LAB/llama.cpp/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/Underdog-27B-Q4_1.gguf",
+    "flags": [
+      "-ngl",
+      "16",
+      "-c",
+      "4096",
+      "-b",
+      "256",
+      "-ub",
+      "256",
+      "-t",
+      "10",
+      "-tb",
+      "10",
+      "--spec-type",
+      "draft-dflash",
+      "-md",
+      "$WOOF_LAB/models/drafts/qwen38-27b-dflash2/Qwen3.8-27B-DFlash2-Q4_K_M.gguf",
+      "-ngld",
+      "99",
+      "--spec-draft-n-max",
+      "5"
+    ]
+  },
+  "dflash2_n7": {
+    "bin": "$WOOF_LAB/llama.cpp/build-cuda/bin/llama-server",
+    "gguf": "$WOOF_LAB/gguf/Underdog-27B-Q4_1.gguf",
+    "flags": [
+      "-ngl",
+      "16",
+      "-c",
+      "4096",
+      "-b",
+      "256",
+      "-ub",
+      "256",
+      "-t",
+      "10",
+      "-tb",
+      "10",
+      "--spec-type",
+      "draft-dflash",
+      "-md",
+      "$WOOF_LAB/models/drafts/qwen38-27b-dflash2/Qwen3.8-27B-DFlash2-Q4_K_M.gguf",
+      "-ngld",
+      "99",
+      "--spec-draft-n-max",
+      "7"
+    ]
+  }
+}
