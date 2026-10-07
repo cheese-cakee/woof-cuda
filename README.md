@@ -129,14 +129,6 @@ results/           raw results behind every number above
 docs/design.md     design and validation
 ```
 
-## Next
-
-- A draft trained on Woof's own outputs (the zero-shot Qwen3.5-4B draft accepts 47.6% of tokens at depth 7).
-- Native Windows build of the serving path.
-- Remove the remaining ~1 ms of host-side staging between decode steps.
-- Underdog-27B on 6 GB: currently 2.8 tok/s plain and 3.4 tok/s with DFlash2 on a CPU/GPU split (not exact); the
-  bottleneck is CPU-side verification.
-
 ## Licenses
 
 Code in this repository: MIT. The patch applies to [llama.cpp](https://github.com/ggml-org/llama.cpp) (MIT).
