@@ -9,4 +9,4 @@ columns,bit_differences,argmax_differences,max_absolute_error,rollback,rollback_
 32,0,0,0,31,0,0
 33,0,0,0,32,0,0
 64,0,0,0,32,0,0
-65,32778237,1,9.5085,32,496640,0
+65,32778233,1,9.67624,32,496639,0

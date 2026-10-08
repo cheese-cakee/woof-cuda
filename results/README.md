@@ -13,8 +13,8 @@ unmodified llama.cpp); the portable equivalents are in `configs/`.
 | `4b/suite-reviewed-long.json` | 4 prompts, 512-token outputs, plain vs DFlash 7 |
 | `2b/suite-2b.json`, `suite-2b-long.json` | Woof 2B: plain, stock, lookup 8/16/32; long-output check |
 | `27b/suite-27b.json` | Underdog-27B CPU/GPU split, plain vs DFlash2 (2 complete rounds, 4 short prompts; not exact) |
-| `exactness/parity-f32-*.csv` | logit parity by verify width (count of unequal f32 logits, argmax differences, rollback) |
-| `exactness/cross-*.csv` | parity between contexts with 0 and 7/15/16/32 recurrent snapshots |
+| `exactness/parity-f32-*.csv` | logit parity by verify width (count of unequal f32 logits, argmax differences, rollback); `-2b-` files are Woof 2B. Regenerate with `tools/exactness/run_oracles.sh` |
+| `exactness/cross-*.csv` | parity between contexts with 0 and 7/15/16/32 recurrent snapshots (2B: 0 vs 32) |
 | `exactness/short-split32.csv`, `graph-api.csv` | fixed attention-split bound on a short context; CUDA graph capture/replay API trace |
 | `exactness/acceptance-proof.json` | exit status of every acceptance check |
 | `exactness/build-manifest.json`, `source-manifest.json` | toolchain, flags, source and binary hashes of the measured build |

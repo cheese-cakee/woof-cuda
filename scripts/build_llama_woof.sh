@@ -26,8 +26,8 @@ checkout "$lab/llama.cpp"
 build "$lab/llama.cpp"
 
 checkout "$lab/llama.cpp-woof"
-if git -C "$lab/llama.cpp-woof" apply --check "$repo/patches/woof-native-exact.patch" 2>/dev/null; then
-  git -C "$lab/llama.cpp-woof" apply "$repo/patches/woof-native-exact.patch"
+if ! git -C "$lab/llama.cpp-woof" apply --reverse --check "$repo/patches/woof-native-exact.patch" 2>/dev/null; then
+  git -C "$lab/llama.cpp-woof" apply --whitespace=nowarn "$repo/patches/woof-native-exact.patch"
 fi
 build "$lab/llama.cpp-woof"
 echo "stock:   $lab/llama.cpp/build-cuda/bin"

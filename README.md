@@ -4,7 +4,12 @@ Lossless speculative decoding for Conway Research's Woof models on a 6 GB laptop
 
 Woof 4B runs at **123 tok/s** on an RTX 4050 Laptop, **2.14x** faster than plain decoding, with greedy output that is
 **token-for-token identical** to plain decoding on every prompt of a 20-prompt task and browser-agent suite. Stock
-llama.cpp speculation on the same model changes 30 of those 60 outputs.
+llama.cpp speculation on the same model changes 30 of those 60 outputs. Woof 2B gets a smaller lossless gain, 1.15x
+overall and 1.56x on edits, from n-gram lookup, because the available draft model does not share its vocabulary.
+
+The speedup comes from speculation, not from faster plain decoding: plain decoding here runs at 56 tok/s, about the same
+as stock llama.cpp, because batch-1 decoding is already close to the GPU's memory-bandwidth limit. What this repo adds is
+making speculation exact.
 
 It is built from three pieces:
 
@@ -13,8 +18,9 @@ It is built from three pieces:
   bit-exact against the original.
 - **A batch-invariant CUDA verify kernel.** Verifying 1 to 64 draft tokens produces logits bit-identical to decoding
   them one at a time, so speculation cannot change the answer, while still streaming the weights at memory speed.
-- **An exact serving profile for a hybrid model.** Fixed-split attention, per-token recurrent-state snapshots for the
-  24 Gated DeltaNet layers, and a bounded verify window, all on top of llama.cpp's DFlash and n-gram speculation.
+- **An exact serving profile for a hybrid model.** Fixed-split attention, recurrent-state snapshots for the 24 Gated
+  DeltaNet layers sized to the draft length, and a bounded verify window, all on top of llama.cpp's DFlash and n-gram
+  speculation.
 
 Independent project. Not affiliated with or endorsed by Conway Research.
 
@@ -71,6 +77,28 @@ pipelining and register tiling. The rest of the graph is pinned the same way.
 
 Full design, data and validation: [`docs/design.md`](docs/design.md).
 
+## What is new and what is reused
+
+Reused:
+
+- Speculative decoding ([Leviathan et al., 2023](https://arxiv.org/abs/2211.17192);
+  [Chen et al., 2023](https://arxiv.org/abs/2302.01318)) and llama.cpp's DFlash and n-gram implementations, server,
+  graph scheduler and per-token recurrent-state snapshots.
+- The [DFlash draft](https://huggingface.co/z-lab/Qwen3.5-4B-DFlash), trained for Qwen3.5-4B and used zero-shot.
+- The principle of batch invariance, as described by Thinking Machines Lab in
+  [Defeating Nondeterminism in LLM Inference](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference)
+  for vLLM: fix the reduction order so a row's result does not depend on how many rows are computed with it.
+
+New in this repo:
+
+- The `Q4_64` type and a lossless import of the MLX release, checked tensor by tensor.
+- A batch-invariant `Q4_64` matrix-vector kernel for 1-64 columns that keeps decode at memory-bandwidth speed,
+  inside llama.cpp's quantized CUDA backend.
+- An exact profile for a hybrid attention/Gated DeltaNet model: fixed attention split count, snapshot count sized to
+  the draft length, verify window bounded to 64 columns.
+- Oracles that check exactness at the level of every f32 logit, not only the generated tokens, and matched
+  multi-round benchmarks.
+
 ## Quickstart
 
 Linux or WSL2 with an NVIDIA GPU (built and tested on sm_89; set `CUDA_ARCH` for others), CUDA 12.x, CMake, GCC,
@@ -99,7 +127,8 @@ python tools/bench/resume_suite.py woof-4b configs/woof-4b-suite.json ~/woof-lab
 python tools/bench/resume_suite.py woof-2b configs/woof-2b-suite.json ~/woof-lab/results/woof-2b.json --runs 3
 tools/bench/measure_verify_cost.sh       # c(n) curve
 
-tools/exactness/build_oracles.sh         # logit parity, cross-snapshot parity, CUDA graph replay
+tools/exactness/build_oracles.sh         # compile the oracles against the patched build
+tools/exactness/run_oracles.sh           # logit parity, cross-snapshot parity, CUDA graph replay; fails on any difference
 ```
 
 The suite runner alternates configuration order between rounds, runs a canary first, saves after every
@@ -121,7 +150,7 @@ patches/woof-native-exact.patch   llama.cpp changes (base commit in patches/BASE
   ggml-cuda/woof-native-affine.cuh   Q4_64 dispatch, exact gather, fallbacks
   ggml-cuda/woof_tc_matvec.cuh       tensor-core variants (experimental, different arithmetic)
 tools/convert/     MLX -> GGUF exact import, Q4_64 repack, tests
-tools/exactness/   logit parity, cross-snapshot parity, graph replay oracles
+tools/exactness/   logit parity, cross-snapshot parity, graph replay oracles; prompts/ holds their token ids
 tools/bench/       20-prompt suite, matched multi-round runner, verify-cost curve
 tools/reference/   MLX (CUDA) reference runner and token comparison
 configs/           benchmark configurations
